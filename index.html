@@ -357,6 +357,235 @@
             padding: 25px 20px;
         }
 
+        /* تصميم روبوت الذكاء الاصطناعي */
+.chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.chat-toggle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.chat-icon {
+  font-size: 22px;
+}
+
+.chat-text {
+  font-size: 14px;
+}
+
+/* نافذة المحادثة */
+.chat-window {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: none;
+  flex-direction: column;
+  z-index: 1001;
+  overflow: hidden;
+  border: 1px solid #e1e8ed;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-avatar {
+  font-size: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.chat-header p {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.close-chat {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* منطقة الرسائل */
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f8f9fa;
+}
+
+.message {
+  margin-bottom: 15px;
+  max-width: 80%;
+}
+
+.message.bot {
+  margin-right: auto;
+}
+
+.message.user {
+  margin-left: auto;
+}
+
+.message-content {
+  padding: 10px 15px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.message.bot .message-content {
+  background: white;
+  border: 1px solid #e1e8ed;
+  border-bottom-left-radius: 5px;
+}
+
+.message.user .message-content {
+  background: #667eea;
+  color: white;
+  border-bottom-right-radius: 5px;
+}
+
+/* منطقة الإدخال */
+.chat-input-area {
+  border-top: 1px solid #e1e8ed;
+  background: white;
+  padding: 15px;
+}
+
+.quick-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.quick-btn {
+  background: #f1f3f5;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #495057;
+}
+
+.quick-btn:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 25px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+#user-input:focus {
+  border-color: #667eea;
+}
+
+#send-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: background 0.3s;
+}
+
+#send-btn:hover {
+  background: #5a67d8;
+}
+
+/* مؤشر الكتابة */
+.chat-footer {
+  margin-top: 10px;
+  height: 20px;
+}
+
+.typing-indicator {
+  font-size: 12px;
+  color: #6c757d;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* مخصص للغة العربية */
+[dir="rtl"] .message.bot {
+  margin-right: unset;
+  margin-left: auto;
+}
+
+[dir="rtl"] .message.user {
+  margin-left: unset;
+  margin-right: auto;
+}
 
         /* نموذج الاتصال */
         .contact-form {
@@ -501,6 +730,58 @@
         </div>
     </header>
 
+    <!-- زر فتح الروبوت -->
+<button id="ai-chat-toggle" class="chat-toggle">
+  <span class="chat-icon">🤖</span>
+  <span class="chat-text">Technic AI</span>
+</button>
+
+<!-- نافذة الروبوت -->
+<div id="ai-chat-window" class="chat-window">
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <span class="chat-avatar">🤖</span>
+      <div>
+        <h3>Technic AI Assistant</h3>
+        <p>أساعدك في خدمات Technic Heroes</p>
+      </div>
+    </div>
+    <button class="close-chat">&times;</button>
+  </div>
+  
+  <div class="chat-messages" id="chat-messages">
+    <!-- الرسائل تظهر هنا -->
+    <div class="message bot">
+      <div class="message-content">
+        مرحباً! أنا المساعد الذكي لـ Technic Heroes. كيف يمكنني مساعدتك اليوم؟
+        <br><br>
+        يمكنني الإجابة عن:
+        • خدمات الأمن السيبراني 🔒
+        • تطوير الذكاء الاصطناعي 🤖
+        • تصميم الشبكات 🌐
+        • تطوير البرمجيات 💻
+      </div>
+    </div>
+  </div>
+  
+  <div class="chat-input-area">
+    <div class="quick-buttons">
+      <button class="quick-btn" data-question="ما هي خدمات الأمن السيبراني؟">🔒 الأمن</button>
+      <button class="quick-btn" data-question="ماذا عن تطوير الذكاء الاصطناعي؟">🤖 الذكاء</button>
+      <button class="quick-btn" data-question="كيف تصممون الشبكات؟">🌐 الشبكات</button>
+    </div>
+    
+    <div class="input-wrapper">
+      <input type="text" id="user-input" placeholder="اكتب سؤالك هنا..." autocomplete="off">
+      <button id="send-btn">↗️</button>
+    </div>
+    
+    <div class="chat-footer">
+      <span class="typing-indicator" id="typing">Technic AI يكتب...</span>
+    </div>
+  </div>
+</div>
+    
     <!-- الهيرو سيكشن -->
     <section class="hero-section" id="home">
         <div class="container">
@@ -1043,22 +1324,177 @@
 
     <!-- AI Chat Widget -->
 <script>
-  (function() {
-    const script = document.createElement('script');
-    script.src = "https://cdn.jsdelivr.net/gh/ayhamaljaridi-ai/chat-widget@latest/widget.js";
-    script.async = true;
-    script.onload = () => {
-      window.ChatAIWidget.init({
-        title: "مساعد AI",
-        placeholder: "اكتب سؤالك هنا...",
-        theme: "light" // أو "dark"
-      });
-    };
-    document.body.appendChild(script);
-  })();
-</script>
+// قاعدة معرفة خاصة بـ Technic Heroes
+const technicKnowledge = {
+  greetings: ["مرحباً", "اهلاً", "السلام عليكم", "hello", "hi"],
+  responses: {
+    "الذكاء الاصطناعي": {
+      ar: "نطور أنظمة ذكاء اصطناعي متقدمة تشمل:\n• معالجة اللغات الطبيعية\n• الرؤية الحاسوبية\n• التعلم الآلي\n• أتمتة العمليات\n\nنستخدم أحدث التقنيات مثل TensorFlow و PyTorch.",
+      services: "خدمات الذكاء الاصطناعي"
+    },
+    "الأمن السيبراني": {
+      ar: "نقدم حلول أمن سيبراني شاملة:\n• حماية الشبكات\n• اختبار الاختراق\n• مراقبة التهديدات\n• استجابة للحوادث\n• تدريب موظفين\n\nنستخدم أدوات مثل Wireshark و Metasploit.",
+      services: "خدمات الأمن السيبراني"
+    },
+    "تصميم الشبكات": {
+      ar: "نصمم شبكات متكاملة باستخدام Packet Tracer:\n• تقسيم VLANs\n• تكوين Routing Protocols\n• تصميم شبكات سحابية\n• شبكات VPN\n• شبكات لاسلكية\n\nنضمن أقصى أداء وأمان.",
+      services: "خدمات تصميم الشبكات"
+    },
+    "تطوير البرمجيات": {
+      ar: "نطور تطبيقات ويب وجوال مخصصة:\n• تطبيقات React / Vue.js\n• تطبيقات Android و iOS\n• أنظمة إدارة\n• واجهات برمجة APIs\n• قواعد بيانات\n\nباستخدام Agile Methodology.",
+      services: "خدمات تطوير البرمجيات"
+    },
+    "تحليل البيانات": {
+      ar: "نحلل البيانات الضخمة باستخدام:\n• Python و R\n• Power BI و Tableau\n• SQL و NoSQL\n• خوارزميات تنقيب البيانات\n• نمذجة تنبؤية\n\nللاستفادة من بياناتك.",
+      services: "خدمات تحليل البيانات"
+    },
+    "الفريق": {
+      ar: "فريق Technic Heroes:\n\n👤 أيهم ناصر الجريدي - مدير تقني\n👤 أيهم ناصر - مطور برمجيات\n👤 أيهم ناصر - محلل بيانات\n👤 قصي الحطام - مصمم واجهات\n\nنعمل معاً لتحقيق رؤيتك.",
+      services: "فريق Technic Heroes"
+    },
+    "الاتصال": {
+      ar: "للتواصل مع Technic Heroes:\n\n📍 يمكنك استخدام نموذج الاتصال في الموقع\n💼 نرد على الاستفسارات خلال 24 ساعة\n🤝 نعمل على مشاريع محلية ودولية\n\nنحن هنا لتحويل أفكارك إلى واقع.",
+      services: "اتصل بنا"
+    },
+    "default": {
+      ar: "شكراً لسؤالك! يمكنني مساعدتك في:\n\n1. خدمات الأمن السيبراني 🔒\n2. تطوير الذكاء الاصطناعي 🤖\n3. تصميم الشبكات 🌐\n4. تطوير البرمجيات 💻\n5. تحليل البيانات 📊\n\nأي من هذه المواضيع تهمك؟",
+      services: "خدمات Technic Heroes"
+    }
+  }
+};
 
+// الذكاء الاصطناعي البسيط
+class TechnicAI {
+  constructor() {
+    this.responses = technicKnowledge.responses;
+  }
+
+  understandQuestion(question) {
+    const q = question.toLowerCase();
+    
+    // البحث عن الكلمات المفتاحية
+    const keywords = {
+      "ذكاء اصطناعي": ["ذكاء", "ai", "تعلم آلي", "machine", "artificial"],
+      "أمن سيبراني": ["أمن", "cyber", "حماية", "security", "اختراق"],
+      "شبكات": ["شبكة", "network", "packet tracer", "vlan", "راوتر"],
+      "برمجيات": ["برمجة", "تطبيق", "software", "برمج", "كود"],
+      "بيانات": ["بيانات", "data", "تحليل", "analysis"],
+      "فريق": ["فريق", "أيهم", "قصي", "team", "من أنتم"],
+      "اتصال": ["اتصل", "تواصل", "contact", "رقم", "بريد"]
+    };
+
+    for (const [category, words] of Object.entries(keywords)) {
+      if (words.some(word => q.includes(word))) {
+        return category;
+      }
+    }
+
+    return "default";
+  }
+
+  generateResponse(question) {
+    const category = this.understandQuestion(question);
+    return this.responses[category] || this.responses.default;
+  }
+}
+
+// DOM Elements
+const chatToggle = document.getElementById('ai-chat-toggle');
+const chatWindow = document.getElementById('ai-chat-window');
+const closeChat = document.querySelector('.close-chat');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
+const chatMessages = document.getElementById('chat-messages');
+const typingIndicator = document.getElementById('typing');
+const quickButtons = document.querySelectorAll('.quick-btn');
+
+// Initialize AI
+const ai = new TechnicAI();
+
+// فتح/إغلاق النافذة
+chatToggle.addEventListener('click', () => {
+  chatWindow.style.display = 'flex';
+  chatToggle.style.display = 'none';
+});
+
+closeChat.addEventListener('click', () => {
+  chatWindow.style.display = 'none';
+  chatToggle.style.display = 'flex';
+});
+
+// إرسال رسالة
+function sendMessage() {
+  const question = userInput.value.trim();
+  if (!question) return;
+
+  // إضافة رسالة المستخدم
+  addMessage(question, 'user');
+  userInput.value = '';
+
+  // عرض مؤشر الكتابة
+  typingIndicator.style.opacity = '1';
+
+  // محاكاة وقت معالجة الذكاء الاصطناعي
+  setTimeout(() => {
+    typingIndicator.style.opacity = '0';
+    
+    // الحصول على الرد
+    const response = ai.generateResponse(question);
+    
+    // إضافة الرد
+    addMessage(response.ar, 'bot');
+    
+    // التمرير للأسفل
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 1000 + Math.random() * 1000);
+}
+
+// إضافة رسالة جديدة
+function addMessage(text, sender) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${sender}`;
+  
+  const contentDiv = document.createElement('div');
+  contentDiv.className = 'message-content';
+  contentDiv.textContent = text;
+  
+  messageDiv.appendChild(contentDiv);
+  chatMessages.appendChild(messageDiv);
+  
+  // التمرير للأسفل
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// الأحداث
+sendBtn.addEventListener('click', sendMessage);
+
+userInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    sendMessage();
+  }
+});
+
+// أزرار الأسئلة السريعة
+quickButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const question = button.getAttribute('data-question');
+    userInput.value = question;
+    sendMessage();
+  });
+});
+
+// إغلاق بالنقر خارج النافذة
+document.addEventListener('click', (e) => {
+  if (!chatWindow.contains(e.target) && 
+      !chatToggle.contains(e.target) && 
+      chatWindow.style.display === 'flex') {
+    chatWindow.style.display = 'none';
+    chatToggle.style.display = 'flex';
+  }
+});
+</script>
 </body>
 
 </html>
+
 
