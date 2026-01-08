@@ -1040,5 +1040,24 @@
         });
     });
 </script>
+
+    <!-- AI Chat Widget -->
+<script>
+  (function() {
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/gh/ayhamaljaridi-ai/chat-widget@latest/widget.js";
+    script.async = true;
+    script.onload = () => {
+      window.ChatAIWidget.init({
+        title: "مساعد AI",
+        placeholder: "اكتب سؤالك هنا...",
+        theme: "light" // أو "dark"
+      });
+    };
+    document.body.appendChild(script);
+  })();
+</script>
+
 </body>
+
 </html>
